@@ -22,11 +22,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set version
-        uses: jacobtomlinson/gha-find-replace@v3
+        uses: richardrigutins/replace-in-files@v2
         with:
-          include: "package.json"
-          find: "\"version\": \"0.0.0\""
-          replace: "\"version\": \"${{ github.event.release.tag_name }}\""
+          files: "package.json"
+          search-text: "\"version\": \"0.0.0\""
+          replacement-text: "\"version\": \"${{ github.event.release.tag_name }}\""
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
