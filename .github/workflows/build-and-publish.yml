@@ -40,6 +40,8 @@ jobs:
       - run: npm ci
       - name: Decode macOS certificate
         run: echo "$APPLE_DEVELOPER_ID_CERT" | base64 --decode > certificate.p12
+      - name: Test to see if certificates are there
+        run: echo "dev id cert $APPLE_DEVELOPER_ID_CERT found"
       - name: Import certificate to keychain
         run: |
           security create-keychain -p actions build.keychain
